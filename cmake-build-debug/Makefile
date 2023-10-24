@@ -177,54 +177,6 @@ quash.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Quash.dir/build.make CMakeFiles/Quash.dir/quash.cpp.s
 .PHONY : quash.cpp.s
 
-thin_printout.o: thin_printout.cpp.o
-.PHONY : thin_printout.o
-
-# target to build an object file
-thin_printout.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Quash.dir/build.make CMakeFiles/Quash.dir/thin_printout.cpp.o
-.PHONY : thin_printout.cpp.o
-
-thin_printout.i: thin_printout.cpp.i
-.PHONY : thin_printout.i
-
-# target to preprocess a source file
-thin_printout.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Quash.dir/build.make CMakeFiles/Quash.dir/thin_printout.cpp.i
-.PHONY : thin_printout.cpp.i
-
-thin_printout.s: thin_printout.cpp.s
-.PHONY : thin_printout.s
-
-# target to generate assembly for a file
-thin_printout.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Quash.dir/build.make CMakeFiles/Quash.dir/thin_printout.cpp.s
-.PHONY : thin_printout.cpp.s
-
-wide_printout.o: wide_printout.cpp.o
-.PHONY : wide_printout.o
-
-# target to build an object file
-wide_printout.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Quash.dir/build.make CMakeFiles/Quash.dir/wide_printout.cpp.o
-.PHONY : wide_printout.cpp.o
-
-wide_printout.i: wide_printout.cpp.i
-.PHONY : wide_printout.i
-
-# target to preprocess a source file
-wide_printout.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Quash.dir/build.make CMakeFiles/Quash.dir/wide_printout.cpp.i
-.PHONY : wide_printout.cpp.i
-
-wide_printout.s: wide_printout.cpp.s
-.PHONY : wide_printout.s
-
-# target to generate assembly for a file
-wide_printout.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Quash.dir/build.make CMakeFiles/Quash.dir/wide_printout.cpp.s
-.PHONY : wide_printout.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -240,12 +192,6 @@ help:
 	@echo "... quash.o"
 	@echo "... quash.i"
 	@echo "... quash.s"
-	@echo "... thin_printout.o"
-	@echo "... thin_printout.i"
-	@echo "... thin_printout.s"
-	@echo "... wide_printout.o"
-	@echo "... wide_printout.i"
-	@echo "... wide_printout.s"
 .PHONY : help
 
 
