@@ -518,16 +518,4 @@ later tiers. The point breakdown for features is below:
     </tr>
 </table>
 
-## Submission
 
-Each group should submit the project to your TA via Blackboard. Create a zip
-file of your code using "make submit". You should also check that the zipped
-project still builds and runs correctly after building the submit target with
-"make unsubmit". Your TA will be using this command to extract and build your
-project so make sure it works correctly. If you modify either of these targets,
-please ensure all file extensions are renamed to ".txt" in the submission and
-extract correctly with the unsubmit target.
-
-## Miscellaneous
-Start early!
-You need to use C language to implement this project.
