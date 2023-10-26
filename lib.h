@@ -4,7 +4,8 @@
 
 void print_splash();
 void thin_printout(int i);
-void wide_printout(int i);
+//void wide_printout(int i);
+void wide_printout(int i, int row, int col);
 
 
 
