@@ -134,19 +134,32 @@ void run_generic(GenericCommand cmd)
   perror("ERROR: Failed to execute program");
 }
 
-// Print strings
-void run_echo(EchoCommand cmd)
-{
-  char **str = cmd.args;
-  for (; *str != NULL; ++str)
-  {
-    printf("%s ", *str);
-  }
-  printf("\n");
 
-  // Flush the buffer before returning
-  fflush(stdout);
+// helper function to remove quotation marks from a string
+void remove_quotes(char *str) {
+    char *src = str, *dst = str;  // src and dst point to the same string
+    while (*src) {  // While there are more characters to process...
+        if (*src != '"') {  // If the current character is not a quotation mark...
+            *dst = *src;  // Copy character to the destination string
+            dst++;  // Increment the destination string pointer
+        }
+        src++;  // Increment the source string pointer
+    }
+    *dst = '\0';  // Terminate the string
 }
+
+// Print strings after removing quotation marks
+void run_echo(EchoCommand cmd) {
+    char **str = cmd.args;  // str points to the first string
+    for (; *str != NULL; ++str) {  // While there are more strings to process...
+        remove_quotes(*str);  // Remove quotation marks from the string
+        printf("%s ", *str);  // Print the string
+    }
+    printf("\n");  // Print a newline character
+
+    fflush(stdout);  // Flush the buffer before returning
+}
+
 
 // Sets an environment variable
 void run_export(ExportCommand cmd)
