@@ -71,6 +71,7 @@ static void print_prompt() {
   fflush(stdout);
 
 //  if (should_free)
+    /* rj: why would we not want to free this? */
     free(cwd);
 }
 

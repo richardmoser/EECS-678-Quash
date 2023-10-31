@@ -131,7 +131,7 @@ void run_generic(GenericCommand cmd)
   char *exec = cmd.args[0];
   char **args = cmd.args;
   execvp(exec, args);
-//  perror("ERROR: Failed to execute program");
+  perror("ERROR: Failed to execute program");
 
 }
 
@@ -476,22 +476,21 @@ void run_script(CommandHolder *holders)
   }
 
   // not a background job
-  if (!(holders[0].flags & BACKGROUND))
+  if (!(holders[0].flags & BACKGROUND))  // not a background job
   {
 
-    while (!is_empty_pid_queue(&pq))
+    while (!is_empty_pid_queue(&pq))  // wait for all processes to finish
     {
       pid_t curr_pid = pop_front_pid_queue(&pq);
       int status;
       waitpid(curr_pid, &status, 0);
     }
-    destroy_pid_queue(&pq);
+    destroy_pid_queue(&pq);  // free pid queue
   }
 
   // background job
   else
   {
-
     struct Job curr_job;
     curr_job.job_id = job_num;
     job_num = job_num + 1;
