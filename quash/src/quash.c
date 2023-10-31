@@ -70,8 +70,8 @@ static void print_prompt() {
           cwd + last_dir_idx);
   fflush(stdout);
 
-  if (should_free)
-    free (cwd);
+//  if (should_free)
+    free(cwd);
 }
 
 QuashState initial_state() {
@@ -119,7 +119,6 @@ int main(int argc, char** argv) {
   if (is_tty()) {
 //    puts("Welcome to Quash!");
 //    make a string, bob = to "Welcome to Quash!"
-
 
 
     printf("\033[2J");  // Clear the screen

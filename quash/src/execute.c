@@ -131,7 +131,8 @@ void run_generic(GenericCommand cmd)
   char *exec = cmd.args[0];
   char **args = cmd.args;
   execvp(exec, args);
-  perror("ERROR: Failed to execute program");
+//  perror("ERROR: Failed to execute program");
+
 }
 
 
@@ -190,32 +191,64 @@ void run_cd(CDCommand cmd)
 }
 
 // Sends a signal to all processes contained in a job
-void run_kill(KillCommand cmd)
-{
-  int signal = cmd.sig;
-  int job_id = cmd.job;
+//void run_kill(KillCommand cmd)
+//{
+//  int signal = cmd.sig;
+//  int job_id = cmd.job;
+//
+//  struct Job curr_job;
+//
+//  // find job
+//  for (int j = 0; j < length_job_queue(&jq); j++)
+//  {
+//
+//    curr_job = pop_front_job_queue(&jq);
+//    if (curr_job.job_id == job_id)
+//    {
+//
+//      // kill all processes
+//      pid_queue curr_pq = curr_job.pq;
+//      while (length_pid_queue(&curr_pq) != 0)
+//      {
+//        pid_t curr_pid = pop_front_pid_queue(&curr_pq);
+//        kill(curr_pid, signal);
+//      }
+//    }
+//    push_back_job_queue(&jq, curr_job);
+//  }
+//}
 
-  struct Job curr_job;
 
-  // find job
-  for (int j = 0; j < length_job_queue(&jq); j++)
-  {
+void run_kill(KillCommand cmd) {
+    // Get the signal number and job PID
+    int sig = cmd.sig;
+    int job_pid = cmd.job;
+//    printf("sig: %d\n", sig);
+//    printf("job_pid: %d\n", job_pid);
 
-    curr_job = pop_front_job_queue(&jq);
-    if (curr_job.job_id == job_id)
-    {
-
-      // kill all processes
-      pid_queue curr_pq = curr_job.pq;
-      while (length_pid_queue(&curr_pq) != 0)
-      {
-        pid_t curr_pid = pop_front_pid_queue(&curr_pq);
-        kill(curr_pid, signal);
-      }
+    // Get the job from the job queue
+    struct Job curr_job;
+    for (int j = 0; j < length_job_queue(&jq); j++) {
+        curr_job = pop_front_job_queue(&jq);
+//        printf("curr_job.job_id: %d\n", curr_job.job_id);
+        if (curr_job.pid == job_pid) {
+            break;
+        }
+        push_back_job_queue(&jq, curr_job);
     }
-    push_back_job_queue(&jq, curr_job);
-  }
+
+    // Kill all processes in the job
+    pid_queue curr_pq = curr_job.pq;
+    while (length_pid_queue(&curr_pq) != 0) {
+        pid_t curr_pid = pop_front_pid_queue(&curr_pq);
+        kill(curr_pid, sig);
+    }
 }
+
+
+
+
+
 
 // Prints the current working directory to stdout
 void run_pwd()
